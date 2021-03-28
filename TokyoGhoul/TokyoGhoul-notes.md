@@ -58,6 +58,7 @@ Dus 3 poorten staan open: poort 21 (ftp), 22 (ssh) en 80 (http)
 
 Gobuster heeft 2 index.html files gevonden
 
+```shell
 ┌──(root💀kali)-[~/CTF-Write-Ups/TokyoGhoul]
 └─# gobuster dir -u http://10.10.213.28/ -w /usr/share/wordlists/dirb/common.txt -x php,html  
 ===============================================================
@@ -92,7 +93,7 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 ===============================================================
 2021/03/28 01:39:14 Finished
 ===============================================================
-
+```
 
 ## HTTP
 
