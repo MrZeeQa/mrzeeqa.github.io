@@ -1,37 +1,11 @@
-## Welcome to GitHub Pages
+## MrZeeQa - Portfolio (IT-student)
 
-You can use the [editor on GitHub](https://github.com/MrZeeQa/CTF-Write-Ups/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+In mijn vrije tijd houd ik me graag bezig met CTF-challenges om mijn cybersecurity-vaardigheiden uit te breiden. Verder probeer ik elke CTF die ik voltooid heb te documenteren, zodat ik notities heb om op terug te kunnen vallen.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Write Ups van behaalde CTF's
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/MrZeeQa/CTF-Write-Ups/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+### TryHackMe
+* RootMe[write-up](https://github.com/MrZeeQa/CTF-Write-Ups/blob/6798afbb2354838dfcd134c0d72c5b19bad2dac7/RootMe/THM-RootMe.pdf)
+* Anonymous[write-up](https://github.com/MrZeeQa/CTF-Write-Ups/blob/6798afbb2354838dfcd134c0d72c5b19bad2dac7/Anonymous/Notes.md)
+* Year of The Owl[write-up](https://github.com/MrZeeQa/CTF-Write-Ups/blob/6798afbb2354838dfcd134c0d72c5b19bad2dac7/Year_Of_Owl_THM/WriteUp.md)
+* TokyoGhoul [write-up](https://github.com/MrZeeQa/CTF-Write-Ups/blob/6798afbb2354838dfcd134c0d72c5b19bad2dac7/TokyoGhoul/TokyoGhoul-notes.md)
