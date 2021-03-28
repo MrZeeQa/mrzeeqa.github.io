@@ -39,7 +39,7 @@ Nmap done: 1 IP address (1 host up) scanned in 16.42 seconds
 Van de output hierboven kom ik tot de conclusie dat we te maken hebben met een windows machine waar een webserver op draait:
 
 
-![](./Images/screenie.png)
+![alt text](Images/screenie.png)
 
 
 ## Directory enumeration
