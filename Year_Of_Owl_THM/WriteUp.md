@@ -3,7 +3,7 @@ title: "Try Hack Me - Year Of the Owl"
 author: Nicolas Bouquiaux
 date: "2021-03-27"
 subject: "CTF Writeup Template"
-keywords: [HTB, CTF, Hack The Box, Security]
+keywords: [THM, Cybersecurity, Try Hack Me]
 titlepage: true
 titlepage-text-color: "FFFFFF"
 titlepage-color: "0c0d0e"
