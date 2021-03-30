@@ -4,8 +4,7 @@ author: Nicolas Bouquiaux
 date: "2021-03-27"
 subject: "Markdown"
 keywords: [Markdown, Example]
-lang: "BE"
-...
+---
 
 # Enumeration
 
@@ -259,7 +258,7 @@ find / -name user.txt 2>/dev/null
 /home/namelessone/user.txt
 cat /home/namelessone/user.txt
 cat /home/namelessone/user.txt
-************************
+[REDACTED]
 ```
 
 ## Root-flag
@@ -289,9 +288,9 @@ whoami
 root
 cat /root/root.txt
 cat /root/root.txt
-********************************
+[REDACTED]
 #
 ```
 
-Wat dus het einde betekent voor zover deze CTF, en dit is persoonlijk al een tweede keer dat mijn methode voor Root te bekomen gerealiseerd werd m.b.v. de GTFOBins. 
+
 
