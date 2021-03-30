@@ -4,7 +4,7 @@ author: Nicolas Bouquiaux
 date: "2021-03-27"
 subject: "Markdown"
 keywords: [Markdown, Example]
-lang: "nl"
+lang: "BE"
 ...
 
 # Enumeration
