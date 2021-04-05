@@ -4,7 +4,7 @@
 
 In mijn vrije tijd houd ik me graag bezig met CTF-challenges om mijn cybersecurity-vaardigheiden uit te breiden. Verder probeer ik elke CTF die ik voltooid heb te documenteren, zodat ik notities heb om op terug te kunnen vallen.
 
-  &lt;script src="[https://tryhackme.com/badge/401375"&gt;&lt;/script&gt;](https://tryhackme.com/badge/401375%22%3E%3C/script%3E)
+![TryHackMe](https://tryhackme-badges.s3.amazonaws.com/mrzeeqa.png)
 
 ## Write Ups van behaalde CTF's
 
