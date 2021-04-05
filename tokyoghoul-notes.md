@@ -7,14 +7,11 @@ keywords:
   - Markdown
   - Example
 lang: nl
+description: 'TryHackMe room: https://tryhackme.com/room/tokyoghoul666'
 ---
 
 # Tokyo Ghoul - Write-up
 
-## Target information
-
-* IP: 10.10.213.28
-* 
 ## Enumeration
 
 nmap geeft volgende output over onze target:
@@ -294,7 +291,7 @@ Loaded 1 password hash (sha512crypt, crypt(3) $6$ [SHA512 256/256 AVX2 4x])
 Cost 1 (iteration count) is 5000 for all loaded hashes
 Will run 2 OpenMP threads
 Press 'q' or Ctrl-C to abort, almost any other key for status
-password123      (?)
+[REDACTED](?)
 1g 0:00:00:00 DONE (2021-03-28 04:54) 1.176g/s 1807p/s 1807c/s 1807C/s cuties..mexico1
 Use the "--show" option to display all of the cracked passwords reliably
 Session completed
@@ -357,7 +354,7 @@ Hi! Welcome to my world kaneki
 What ? You gonna stand like a chicken ? fight me Kaneki
 >>> __builtins__.__dict__['__IMPORT__'.lower()]('PTY'.lower()).__dict__['SPAWN'.lower()]('/bin/bash')
 root@vagrant:~# cat /root/root.txt 
-9d790bb87898ca66f724ab05a9e6000b
+[REDACTED]
 root@vagrant:~#
 ```
 
