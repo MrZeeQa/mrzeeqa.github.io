@@ -10,7 +10,7 @@ lang: nl
 description: 'TryHackMe room: https://tryhackme.com/room/tokyoghoul666'
 ---
 
-# Tokyo Ghoul - Write-up
+# Tokyo Ghoul - Write-up \(NL\)
 
 ## Enumeration
 
